@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=mail" />
+
+<div class="container">
+  <mat-card>
+    <mat-card-header class="head">
+      <mat-card-title>Bejelentkezés</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      @if (isLoading) {
+          <div class="loading-container">
+            <h2>Login in progress</h2>
+            <mat-spinner diameter="50"></mat-spinner>
+            <p>Kérlek várj...</p>
+          </div>
+        }
+
+        @if (showLoginForm) {
+          <form (ngSubmit)="login()" class="login-form">
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput type="email" [formControl]="email">
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+          
+            <mat-form-field appearance="outline">
+              <mat-label>Jelszó</mat-label>
+              <input matInput type="password" [formControl]="password">
+              <mat-icon matSuffix>lock</mat-icon>
+            </mat-form-field>
+          
+            @if (loginError) {
+              <div class="error-message">
+                {{ loginError }}
+              </div>
+            }
+          
+            <button type="submit">Bejelentkezés</button>
+          </form>
+        }
+      <div>Nincs még fiókod? <a href="/registration">Regisztrálj!</a></div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+

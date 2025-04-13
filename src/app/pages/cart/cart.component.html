@@ -1,0 +1,41 @@
+<div class="container">
+    <mat-card>
+    <mat-card-header class="head">
+        <mat-card-title>{{ title }}</mat-card-title>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Profil választás</mat-label>
+            <mat-select class="" [value]="selectedIndex" (selectionChange)="reload($event.value)">
+              @for (profile of ProfileObject; track $index) {
+                <mat-option [value]="$index">{{profile.id}}</mat-option>
+              }
+            </mat-select>
+        </mat-form-field>
+
+
+        
+    </mat-card-header>
+    <mat-card-content>
+        @if (ProfileObject[selectedIndex].ticket.hasOwnProperty('title')) {
+            <table class="stats-table">
+                <tr>
+                    <td>
+                        <div class="title">{{ProfileObject[selectedIndex].ticket.title}}</div>
+                        <div>{{ProfileObject[selectedIndex].ticket.date}}</div>
+                        <div>sor: {{ProfileObject[selectedIndex].ticket.row}}, oszlop: {{ProfileObject[selectedIndex].ticket.column}}</div>
+                    </td>
+                    <td>
+                        <div>{{ProfileObject[selectedIndex].ticket.price}} Ft</div>
+                    </td>
+                    <td>
+                        <button class="delete"><mat-icon>delete</mat-icon></button>
+                    </td>
+                </tr>
+            </table>
+        }@else {
+            <div class="ures">Üres a kosár</div>
+        }
+            <button class="button">Megvásárolom</button>
+    </mat-card-content>
+    </mat-card>
+</div>
