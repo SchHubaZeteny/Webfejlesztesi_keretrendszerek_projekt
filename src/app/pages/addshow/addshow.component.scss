@@ -1,0 +1,148 @@
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-card-title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.add {
+    margin-bottom: 30px;
+}
+
+.add, input {
+    margin-right: 15px;
+}
+
+.addbutton {
+    margin-bottom: 30px;
+}
+
+.addbutton {
+    background-color: rgb(139, 8, 139);
+    width: 150px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 12px 30px;
+    margin-bottom: 20px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+}
+
+.addbutton:hover {
+    background-color: rgb(107, 7, 107);
+    box-shadow: 0 0 20px rgb(139, 8, 139);
+}
+
+mat-card {
+    background-color: #fff;
+}
+
+mat-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+td {
+    padding: 20px 70px;
+    text-align: left;
+    border-bottom: #333;
+}
+
+table, tr {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.cim {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.datum {
+    font-size: 15px;
+    color: rgb(82, 82, 82);
+}
+
+.ar {
+    font-size: 17px;
+}
+
+.delete {
+    background-color: red;
+    width: 40px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0px;
+    margin-bottom: 20px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+}
+
+.delete:hover {
+    background-color: rgb(171, 0, 0);
+    box-shadow: 0 0 20px rgb(196, 21, 21);
+}
+
+@media (max-width: 675px) {
+    div .add {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .add, input {
+        margin-bottom: 10px;
+    }
+    td {
+        padding: 20px 50px;
+    }
+}
+
+@media (max-width: 570px) {
+    td {
+        padding: 20px 40px;
+    }
+}
+
+@media (max-width: 495px) {
+    
+    td {
+        padding: 20px 20px;
+    }
+}
+
+@media (max-width: 380px) {
+    
+    td {
+        padding: 20px 12px;
+    }
+}

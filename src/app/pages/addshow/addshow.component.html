@@ -1,0 +1,54 @@
+<div class="container">
+    <mat-card>
+        <mat-card-header class="head">
+            <mat-card-title>{{ title }}</mat-card-title>
+            <form [formGroup]="showForm" (ngSubmit)="addShow()" class="show-form">
+                <div class="form-row">
+                  <mat-form-field appearance="outline" class="show-input">
+                    <mat-label>Cím</mat-label>
+                    <input matInput formControlName="title" placeholder="Cím">
+                  </mat-form-field>
+                </div>
+                <div class="form-row">
+                    <mat-form-field appearance="outline" class="show-input">
+                      <mat-label>Ár</mat-label>
+                      <input type="number" matInput formControlName="price" placeholder="Ár">
+                    </mat-form-field>
+                  </div>
+                <div class="form-row">
+                  <mat-form-field appearance="outline" class="date-picker">
+                    <mat-label>Dátum</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                    <button class="addbutton" type="submit" [disabled]="isLoading">
+                    @if (isLoading) {
+                      <mat-spinner diameter="24" class="spinner-button"></mat-spinner>
+                    } @else {
+                      Hozzáadás
+                    }
+                  </button>
+                </div>
+              </form>
+        </mat-card-header>
+        <mat-card-content>
+            <table>
+            @for (show of shows; track $index) {
+                    <tr>
+                        <td>
+                            <div class="cim">{{ show.title }}</div>
+                            <div class="datum">{{ show.date | dateFormatter }}</div>
+                        </td>
+                        <td>
+                            <div class="ar">{{ show.price |  moneyFormatter }}</div>
+                        </td>
+                        <td>
+                            <button class="delete" (click)="deleteShow(show.id)"><mat-icon>delete</mat-icon></button>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </mat-card-content>
+    </mat-card>
+</div>

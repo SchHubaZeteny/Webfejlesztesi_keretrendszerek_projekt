@@ -1,0 +1,41 @@
+<!--<app-menu></app-menu>
+<router-outlet />-->
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav>
+      <app-menu [sidenav]="sidenav"></app-menu>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar>
+        <button 
+          mat-button 
+          (click)="onToggleSidenav(sidenav)"
+          class="menu-toggle-button">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <div>SzuperSzínház</div>
+        <nav>
+            <ul>
+              <li><a class="lk" routerLink="/home">Főoldal</a></li>
+              <li><a class="lk" routerLink="/shows">Műsorok</a></li>
+              @if (isLoggedIn) {
+              <li><a class="lk" routerLink="/addshow">Műsor Hozzáadás</a></li>
+              }
+              @if (isLoggedIn) {
+              <li><a class="lk" routerLink="/profile">Profil</a></li>
+              }
+              @if (!isLoggedIn) {
+              <li><a class="lk" routerLink="/login">Bejelentkezés</a></li>
+              }
+              @if (isLoggedIn) {
+              <li><a class="lk" routerLink="/cart">Kosár</a></li>
+              }
+              @if (isLoggedIn) {
+              <li><a class="lk" href="#" (click)="$event.preventDefault(); logout()">Kijelentkezés</a></li>
+              }
+            </ul>
+        </nav>
+      </mat-toolbar>
+      <router-outlet />
+    </mat-sidenav-content>
+  </mat-sidenav-container>

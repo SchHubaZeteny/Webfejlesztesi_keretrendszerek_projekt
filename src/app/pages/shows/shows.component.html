@@ -1,0 +1,36 @@
+<div class="container">
+    <mat-card>
+        <mat-card-header>
+
+            <mat-card-title>{{ title }}</mat-card-title>
+
+            <div class="filter">
+                <input type="text" placeholder="Cím">
+                <input type="text" placeholder="Dátum">
+                <input type="text" placeholder="Ár">
+            </div>
+
+            <button class="search"><mat-icon>search</mat-icon></button>
+
+        </mat-card-header>
+
+        <mat-card-content>
+            <table>
+                @for (show of shows; track $index) {
+                    <tr>
+                        <td>
+                            <div class="cim">{{ show.title }}</div>
+                            <div class="datum">{{ show.date | dateFormatter }}</div>
+                        </td>
+                        <td>
+                            <div class="ar">{{ show.price | moneyFormatter }}</div>
+                        </td>
+                        <td>
+                            <button class="vasarlas" (click)="addTicket(show.id)">Jegyvásárlás</button>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </mat-card-content>
+    </mat-card>
+</div>

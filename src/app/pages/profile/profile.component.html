@@ -1,0 +1,55 @@
+<div class="container">
+    <mat-card>
+      @if (isLoading) {
+        <div class="loading-container">
+          <p>Loading profile data...</p>
+        </div>
+      } @else if (user) {
+        <mat-card-header class="head">
+          <mat-card-title>Felhasználói Profil</mat-card-title>
+          <div class="profile-info">
+            <div class="avatar-container">
+              <div class="avatar mat-elevation-z2">
+                {{ getUserInitials() }}
+              </div>
+            </div>
+            <div class="user-details">
+              <div class="user-name">
+                <span>{{ user.name.firstname }} {{ user.name.lastname }}</span>
+              </div>
+              <div class="user-email">
+                <span>{{ user.email }}</span>
+              </div>
+            </div>
+          </div>
+
+          <h2>Adatok</h2>
+        </mat-card-header>
+    
+        <mat-card-content class="stats-section">
+            <div class="stats-cards">
+              <mat-card class="stat-card">
+                <mat-card-header>
+                  <mat-icon mat-card-avatar>shopping_cart</mat-icon>
+                  <mat-card-title>{{ stats.vasarolt }}</mat-card-title>
+                  <mat-card-subtitle>Megvásárolt jegyek</mat-card-subtitle>
+                </mat-card-header>
+              </mat-card>
+              
+              <mat-card class="stat-card">
+                <mat-card-header>
+                  <mat-icon mat-card-avatar>done_all</mat-icon>
+                  <mat-card-title>{{ stats.points }}</mat-card-title>
+                  <mat-card-subtitle>Pontok</mat-card-subtitle>
+                </mat-card-header>
+              </mat-card>
+            </div>
+        </mat-card-content>
+      }  @else {
+        <div class="empty-state">
+          <mat-icon>person_off</mat-icon>
+          <p>Nincsen felhasználói profil. Kérlek jelentkezz be.</p>
+        </div>
+      }
+      </mat-card>
+</div>

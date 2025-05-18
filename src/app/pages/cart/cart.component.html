@@ -1,0 +1,41 @@
+<div class="container">
+    <mat-card>
+    <mat-card-header class="head">
+        <mat-card-title>{{ title }}</mat-card-title>
+
+
+        
+    </mat-card-header>
+    <mat-card-content>
+        @if (isLoading) {
+            <div class="loading-container">
+              <mat-spinner diameter="40"></mat-spinner>
+              <p>Loading tickets...</p>
+            </div>
+          } @else if (tickets.length === 0) {
+            <div class="empty-state">
+              <mat-icon>assignment</mat-icon>
+              <p>No tickets available.</p>
+            </div>
+        } @else {
+            <table class="stats-table">
+                @for (ticket of tickets; track $index) {
+                <tr>
+                    <td>
+                        <div class="title">{{ ticket.title }}</div>
+                        <div>{{ ticket.date }}</div>
+                    </td>
+                    <td>
+                        <div>{{ ticket.price | moneyFormatter }}</div>
+                    </td>
+                    <td>
+                        <button class="delete" (click)="deleteTicket(ticket.id)"><mat-icon>delete</mat-icon></button>
+                    </td>
+                </tr>
+            }
+            </table>
+        }
+            <button class="button">Megvásárolom</button>
+    </mat-card-content>
+    </mat-card>
+</div>
